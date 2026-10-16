@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Lesotho Trails</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f5f0;
+            font-family: 'DM Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #25352c;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .header {
+            background-color: #25352c;
+            color: white;
+            padding: 15px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 55px;
+            height: 55px;
+            border: 2px solid #d6b77a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d6b77a;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .brand-name small {
+            font-weight: normal;
+            letter-spacing: 3px;
+        }
+
+        .header h1 {
+            color: white;
+            text-align: center;
+            font-size: 28px;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navigation a,
+        .theme-button {
+            color: white;
+            font-size: 14px;
+            padding: 9px 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .navigation a:hover,
+        .navigation a.active,
+        .theme-button:hover {
+            background-color: #d6b77a;
+            color: #25352c;
+        }
+
+        .theme-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .page-hero {
+            background-color: #e8e5da;
+            padding: 65px 8%;
+        }
+
+        .eyebrow {
+            color: #8a6c36;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .page-hero h2 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .page-hero h2 em {
+            color: #8a6c36;
+        }
+
+        .page-hero p {
+            max-width: 650px;
+            font-size: 16px;
+        }
+
+        .content-section {
+            width: 84%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .content-row {
+            display: grid;
+            grid-template-columns: 5fr 6fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-panel {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .contact-panel h2 {
+            font-size: 36px;
+            line-height: 1.3;
+            margin: 10px 0;
+        }
+
+        .contact-panel h2 em {
+            color: #8a6c36;
+        }
+
+        .contact-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 22px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e2d9;
+        }
+
+        .contact-detail strong {
+            color: #8a6c36;
+            font-size: 15px;
+        }
+
+        .contact-detail span {
+            overflow-wrap: anywhere;
+        }
+
+        .small-note {
+            color: #777;
+            font-size: 13px;
+            margin-top: 25px;
+        } 
+
+        .form-section h2 {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        .form-section h2 em {
+            color: #8a6c36;
+        }
+
+        form {
+            margin-top: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'DM Sans', Arial, sans-serif;
+            font-size: 15px;
+            background-color: white;
+            color: #25352c;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #8a6c36;
+            box-shadow: 0 0 0 2px rgba(138, 108, 54, 0.12);
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: #25352c;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #8a6c36;
+        }
+
+        .form-feedback {
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .form-feedback.success {
+            color: #237345;
+        }
+
+        .form-feedback.error {
+            color: #b42318;
+        }
+
+        .booking-section {
+            display: grid;
+            grid-template-columns: 5fr 6fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 70px;
+        }
+
+        .booking-section h2 {
+            font-size: 40px;
+            line-height: 1.3;
+        }
+
+        .booking-section h2 em {
+            color: #8a6c36;
+        }
+
+        .booking-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            margin-top: 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            background-color: #25352c;
+            color: white;
+            margin-top: 60px;
+            padding: 25px 8%;
+            font-size: 14px;
+        }
+
+        body.dark-mode {
+            background-color: #18221c;
+            color: #f7f5f0;
+        }
+
+        body.dark-mode .page-hero {
+            background-color: #29382e;
+        }
+
+        body.dark-mode .contact-panel,
+        body.dark-mode .booking-form {
+            background-color: #25352c;
+            color: white;
+        }
+
+        body.dark-mode input,
+        body.dark-mode textarea,
+        body.dark-mode select {
+            background-color: #18221c;
+            color: white;
+            border-color: #68776b;
+        }
+
+        body.dark-mode .contact-detail {
+            border-color: #526055;
+        }
+
+        body.dark-mode .small-note {
+            color: #ccc;
+        }
+
+        @media (max-width: 1000px) {
+            .header {
+                padding: 15px 4%;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .navigation a,
+            .theme-button {
+                font-size: 12px;
+                padding: 8px 6px;
+            }
+
+            .content-section {
+                width: 90%;
+            }
+
+            .content-row,
+            .booking-section {
+                gap: 30px;
+            }
+
+            .contact-panel h2,
+            .form-section h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .header {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .logo-container {
+                justify-content: center;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .navigation {
+                justify-content: center;
+                gap: 5px;
+            }
+
+            .navigation a,
+            .theme-button {
+                font-size: 13px;
+                padding: 8px;
+            }
+
+            .page-hero {
+                padding: 45px 7%;
+            }
+
+            .page-hero h2 {
+                font-size: 36px;
+            }
+
+            .page-hero p {
+                font-size: 15px;
+            }
+
+            .content-section {
+                width: 92%;
+                margin: 35px auto;
+            }
+
+            .content-row,
+            .booking-section {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .contact-panel {
+                padding: 22px;
+            }
+
+            .contact-panel h2,
+            .form-section h2,
+            .booking-section h2 {
+                font-size: 30px;
+            }
+
+            .booking-form {
+                padding: 22px;
+            }
+
+            input,
+            textarea,
+            select {
+                font-size: 15px;
+            }
+
+            .submit-button {
+                width: 100%;
+                padding: 14px;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header {
+                padding: 15px 10px;
+            }
+
+            .brand-mark {
+                width: 45px;
+                height: 45px;
+            }
+
+            .header h1 {
+                font-size: 21px;
+                letter-spacing: 1px;
+            }
+
+            .navigation {
+                gap: 2px;
+            }
+
+            .navigation a,
+            .theme-button {
+                font-size: 12px;
+                padding: 7px 5px;
+            }
+
+            .page-hero h2 {
+                font-size: 30px;
+            }
+
+            .contact-panel,
+            .booking-form {
+                padding: 17px;
+            }
+
+            .contact-panel h2,
+            .form-section h2,
+            .booking-section h2 {
+                font-size: 27px;
+            }
+        }
+
+        .field-error {
+            color: #b42318;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <div class="brand-mark">LT</div>
+            <div class="brand-name">
+                Lesotho<br>
+                <small>TRAILS</small>
+            </div>
+        </div>
+
+        <h1>LESOTHO TRAILS</h1>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="activities.html">Activities</a>
+            <a href="stay.html">Stay</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html" class="active">Contact</a>
+
+            <button
+                type="button"
+                class="theme-button"
+                id="themeToggle"
+                aria-label="Switch to dark mode">
+                ◐
+            </button>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <p class="eyebrow">Start a conversation</p>
+
+        <h2>
+            Bring a question.<br>
+            <em>Leave with a plan.</em>
+        </h2>
+
+        <p>
+            Tell us what kind of journey you are imagining.
+            We will point you towards the places, people and
+            pace that fit.
+        </p>
+    </section>
+
+    <main>
+        <section class="content-section">
+            <div class="content-row">
+                <div class="contact-panel">
+                    <p class="eyebrow">Find us here</p>
+
+                    <h2>
+                        Good roads<br>
+                        <em>begin simply.</em>
+                    </h2>
+
+                    <div class="contact-detail">
+                        <strong>Email</strong>
+                        <span>hello@lesothotrails.example</span>
+                    </div>
+
+                    <div class="contact-detail">
+                        <strong>Phone</strong>
+                        <span>+266 5000 2026</span>
+                    </div>
+
+                    <div class="contact-detail">
+                        <strong>Hours</strong>
+                        <span>Monday–Friday, 08:00–17:00</span>
+                    </div>
+
+                    <p class="small-note">
+                        We are a fictional student project.
+                        No booking or payment is processed.
+                    </p>
+                </div>
+
+                <div class="form-section">
+                    <p class="eyebrow">Contact form</p>
+
+                    <h2>
+                        Let's talk<br>
+                        <em>mountains.</em>
+                    </h2>
+
+                    <form id="contact-form" novalidate>
+                        <label for="name">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required>
+                        <div class="field-error" id="name-error"></div>
+
+                        <label for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required>
+                        <div class="field-error" id="email-error"></div>
+
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Choose one...</option>
+                            <option value="Trip planning">Trip planning</option>
+                            <option value="Accommodation">Accommodation</option>
+                            <option value="Activities">Activities</option>
+                            <option value="Something else">Something else</option>
+                        </select>
+                        <div class="field-error" id="subject-error"></div>
+
+                        <label for="message">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your message"
+                            required></textarea>
+                        <div class="field-error" id="message-error"></div>
+
+                        <button type="submit" class="submit-button">
+                            Send message →
+                        </button>
+
+                        <div
+                            class="form-feedback"
+                            id="contact-feedback"
+                            aria-live="polite">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="booking-section">
+                <div>
+                    <p class="eyebrow">Booking request</p>
+                    <h2>
+                        Make it<br>
+                        <em>real.</em>
+                    </h2>
+                </div>
+
+                <form id="booking-form" class="booking-form" novalidate>
+                    <label for="date">Arrival date</label>
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required>
+                    <div class="field-error" id="date-error"></div>
+
+                    <label for="guests">Travellers</label>
+                    <input
+                        type="number"
+                        id="guests"
+                        name="guests"
+                        min="1"
+                        max="12"
+                        placeholder="Number of travellers"
+                        required>
+                    <div class="field-error" id="guests-error"></div>
+
+                    <label for="service">What are you after?</label>
+                    <select id="service" name="service" required>
+                        <option value="">Choose an option...</option>
+                        <option value="A full itinerary">A full itinerary</option>
+                        <option value="A place to stay">A place to stay</option>
+                        <option value="A single activity">A single activity</option>
+                    </select>
+                    <div class="field-error" id="service-error"></div>
+
+                    <button type="submit" class="submit-button">
+                        Request availability →
+                    </button>
+
+                    <div
+                        class="form-feedback"
+                        id="booking-feedback"
+                        aria-live="polite">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>© 2026 Lesotho Trails</span>
+        <span>Made for the road less travelled.</span>
+    </footer>
+
+    <script>
+        function showError(id, message) {
+            document.getElementById(id).textContent = message;
+        }
+
+        function clearErrors(ids) {
+            ids.forEach(function(id) {
+                showError(id, "");
+            });
+        }
+
+        function setFeedback(id, message, type) {
+            const feedback = document.getElementById(id);
+            feedback.textContent = message;
+            feedback.className = "form-feedback " + type;
+        }
+
+        const contactForm = document.getElementById("contact-form");
+
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            clearErrors([
+                "name-error",
+                "email-error",
+                "subject-error",
+                "message-error"
+            ]);
+
+            setFeedback("contact-feedback", "", "");
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value.trim();
+
+            let valid = true;
+
+            if (name === "") {
+                showError("name-error", "Please enter your name.");
+                valid = false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                showError("email-error", "Please enter a valid email address.");
+                valid = false;
+            }
+
+            if (subject === "") {
+                showError("subject-error", "Please choose a subject.");
+                valid = false;
+            }
+
+            if (message === "") {
+                showError("message-error", "Please enter your message.");
+                valid = false;
+            }
+
+            if (!valid) {
+                setFeedback(
+                    "contact-feedback",
+                    "Please correct the errors above.",
+                    "error"
+                );
+                return;
+            }
+
+            setFeedback(
+                "contact-feedback",
+                "Thank you, " + name +
+                ". Your form has passed validation. " +
+                "This student project does not send messages to a server.",
+                "success"
+            );
+
+            contactForm.reset();
+        });
+
+        const bookingForm = document.getElementById("booking-form");
+
+        bookingForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            clearErrors([
+                "date-error",
+                "guests-error",
+                "service-error"
+            ]);
+
+            setFeedback("booking-feedback", "", "");
+
+            const date = document.getElementById("date").value;
+            const guests = Number(document.getElementById("guests").value);
+            const service = document.getElementById("service").value;
+
+            let valid = true;
+
+            if (date === "") {
+                showError("date-error", "Please select an arrival date.");
+                valid = false;
+            } else {
+                const selectedDate = new Date(date + "T00:00:00");
+                const today = new Date();
+
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    showError(
+                        "date-error",
+                        "Please choose today or a future date."
+                    );
+                    valid = false;
+                }
+            }
+
+            if (
+                !Number.isInteger(guests) ||
+                guests < 1 ||
+                guests > 12
+            ) {
+                showError(
+                    "guests-error",
+                    "Enter between 1 and 12 travellers."
+                );
+                valid = false;
+            }
+
+            if (service === "") {
+                showError("service-error", "Please choose a service.");
+                valid = false;
+            }
+
+            if (!valid) {
+                setFeedback(
+                    "booking-feedback",
+                    "Please correct the errors above.",
+                    "error"
+                );
+                return;
+            }
+
+            setFeedback(
+                "booking-feedback",
+                "Your booking request has passed validation. " +
+                "This student project does not make real bookings.",
+                "success"
+            );
+
+            bookingForm.reset();
+        });
+
+        const themeToggle = document.getElementById("themeToggle");
+
+        themeToggle.addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+
+            const darkMode = document.body.classList.contains("dark-mode");
+
+            themeToggle.textContent = darkMode ? "☀" : "◐";
+
+            themeToggle.setAttribute(
+                "aria-label",
+                darkMode
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+            );
+        });
+    </script>
+</body>
+
+</html>

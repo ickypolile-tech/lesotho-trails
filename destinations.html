@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Destinations | Lesotho Trails</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f5f0;
+            font-family: 'DM Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #25352c;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .header {
+            background-color: #25352c;
+            color: white;
+            padding: 15px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 55px;
+            height: 55px;
+            border: 2px solid #d6b77a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d6b77a;
+            font-size: 20px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .brand-name small {
+            font-weight: normal;
+            letter-spacing: 3px;
+        }
+
+        .header h1 {
+            color: white;
+            text-align: center;
+            font-size: 25px;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .navigation a,
+        .theme-button {
+            color: white;
+            font-size: 13px;
+            padding: 8px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .navigation a:hover,
+        .navigation a.active,
+        .theme-button:hover {
+            background-color: #d6b77a;
+            color: #25352c;
+        }
+
+        .theme-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 19px;
+        }
+
+        .page-hero {
+            background-color: #e8e5da;
+            padding: 70px 8%;
+        }
+
+        .eyebrow {
+            color: #8a6c36;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .page-hero h2 {
+            font-size: 52px;
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .page-hero h2 em {
+            color: #8a6c36;
+        }
+
+        .page-hero p {
+            max-width: 650px;
+            font-size: 16px;
+        }
+
+        .content-section {
+            width: 84%;
+            max-width: 1200px;
+            margin: 55px auto;
+        }
+
+        .section-heading {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            margin: 0;
+        }
+
+        .section-heading h2 em {
+            color: #8a6c36;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #d5d2c9;
+            border-radius: 8px;
+            padding: 5px 12px;
+            background-color: white;
+        }
+
+        .search-icon {
+            font-size: 25px;
+            color: #8a6c36;
+            margin-right: 10px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            font-family: inherit;
+            background: transparent;
+            color: #25352c;
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .filter-button {
+            background-color: transparent;
+            color: #25352c;
+            border: 1px solid #c9c6bb;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background-color: #25352c;
+            color: white;
+            border-color: #25352c;
+        }
+
+        .destination-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .destination-card {
+            display: grid;
+            grid-template-columns: 50px 1fr 260px 30px;
+            align-items: center;
+            gap: 25px;
+            padding: 25px 10px;
+            border-top: 1px solid #dcd9cf;
+            transition: 0.3s;
+        }
+
+        .destination-card:last-child {
+            border-bottom: 1px solid #dcd9cf;
+        }
+
+        .destination-card:hover {
+            background-color: #eeece4;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+        .destination-card.hidden {
+            display: none;
+        }
+
+        .number {
+            color: #8a6c36;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .destination-info h3 {
+            font-size: 26px;
+            margin: 0 0 8px;
+        }
+
+        .destination-info p {
+            color: #666;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .category-label {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 5px 10px;
+            background-color: #e8e5da;
+            border-radius: 20px;
+            color: #66512e;
+            font-size: 12px;
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .arrow {
+            color: #8a6c36;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .no-results {
+            display: none;
+            padding: 30px 10px;
+            text-align: center;
+            color: #666;
+        }
+
+        .explore-banner {
+            background-color: #25352c;
+            color: white;
+            padding: 45px;
+            border-radius: 12px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .explore-banner h2 {
+            font-size: 32px;
+            margin: 0 0 10px;
+        }
+
+        .explore-banner p {
+            max-width: 650px;
+            margin: 0 auto 20px;
+            color: #e0e4df;
+        }
+
+        .explore-button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 5px;
+            background-color: #d6b77a;
+            color: #25352c;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .explore-button:hover {
+            background-color: white;
+        }
+
+        .footer {
+            background-color: #25352c;
+            color: white;
+            margin-top: 60px;
+            padding: 35px 8% 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+
+        .footer-copy {
+            color: #d0d5cf;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-top: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #d6b77a;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-top: 1px solid #526055;
+            margin-top: 30px;
+            padding-top: 20px;
+            color: #d0d5cf;
+            font-size: 13px;
+        }
+
+        body.dark-mode {
+            background-color: #18221c;
+            color: #f7f5f0;
+        }
+
+        body.dark-mode .page-hero {
+            background-color: #29382e;
+        }
+
+        body.dark-mode .destination-card {
+            border-color: #465449;
+        }
+
+        body.dark-mode .destination-card:hover {
+            background-color: #29382e;
+        }
+
+        body.dark-mode .destination-info p,
+        body.dark-mode .no-results {
+            color: #d0d5cf;
+        }
+
+        body.dark-mode .search-box {
+            background-color: #25352c;
+            border-color: #526055;
+        }
+
+        body.dark-mode .search-box input {
+            color: white;
+        }
+
+        body.dark-mode .filter-button {
+            color: white;
+            border-color: #68776b;
+        }
+
+        body.dark-mode .filter-button:hover,
+        body.dark-mode .filter-button.active {
+            background-color: #d6b77a;
+            color: #25352c;
+        }
+
+        body.dark-mode .category-label {
+            background-color: #35463a;
+            color: #f7f5f0;
+        }
+
+        body.dark-mode .explore-banner {
+            background-color: #29382e;
+        }
+
+        @media (max-width: 1000px) {
+            .header {
+                padding: 15px 4%;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .navigation a,
+            .theme-button {
+                font-size: 12px;
+                padding: 7px 5px;
+            }
+
+            .content-section {
+                width: 90%;
+            }
+
+            .destination-card {
+                grid-template-columns: 40px 1fr 200px 25px;
+                gap: 15px;
+            }
+
+            .destination-card img {
+                height: 130px;
+            }
+
+            .destination-info h3 {
+                font-size: 23px;
+            }
+
+            .section-heading h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .header {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .logo-container {
+                justify-content: center;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .navigation {
+                justify-content: center;
+                gap: 5px;
+            }
+
+            .navigation a,
+            .theme-button {
+                font-size: 13px;
+                padding: 8px;
+            }
+
+            .page-hero {
+                padding: 45px 7%;
+            }
+
+            .page-hero h2 {
+                font-size: 38px;
+            }
+
+            .page-hero p {
+                font-size: 15px;
+            }
+
+            .content-section {
+                width: 92%;
+                margin: 35px auto;
+            }
+
+            .section-heading {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .filter-bar {
+                gap: 7px;
+            }
+
+            .filter-button {
+                padding: 9px 14px;
+            }
+
+            .destination-card {
+                grid-template-columns: 35px 1fr 25px;
+                gap: 12px;
+                padding: 20px 5px;
+            }
+
+            .destination-card img {
+                grid-column: 2 / 3;
+                grid-row: 2;
+                height: 200px;
+                margin-top: 10px;
+            }
+
+            .destination-info {
+                grid-column: 2 / 3;
+                grid-row: 1;
+            }
+
+            .number {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .arrow {
+                grid-column: 3;
+                grid-row: 1;
+            }
+
+            .destination-info h3 {
+                font-size: 23px;
+            }
+
+            .destination-info p {
+                font-size: 14px;
+            }
+
+            .explore-banner {
+                padding: 30px 20px;
+            }
+
+            .explore-banner h2 {
+                font-size: 27px;
+            }
+
+            .footer-top,
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .page-hero h2 {
+                font-size: 32px;
+            }
+
+            .navigation {
+                gap: 2px;
+            }
+
+            .navigation a,
+            .theme-button {
+                font-size: 12px;
+                padding: 6px;
+            }
+
+            .destination-card img {
+                height: 160px;
+            }
+
+            .destination-info h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <div class="brand-mark">LT</div>
+
+            <div class="brand-name">
+                Lesotho<br>
+                <small>TRAILS</small>
+            </div>
+        </div>
+
+        <h1>LESOTHO TRAILS</h1>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="destinations.html" class="active">Destinations</a>
+            <a href="activities.html">Activities</a>
+            <a href="stay.html">Stay</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+
+            <button
+                type="button"
+                class="theme-button"
+                id="themeToggle"
+                aria-label="Switch to dark mode">
+                ◐
+            </button>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <p class="eyebrow">The mountain kingdom · Southern Africa</p>
+
+        <h2>
+            Find your<br>
+            <em>next adventure.</em>
+        </h2>
+
+        <p>
+            Discover the dramatic mountain passes, beautiful waterfalls,
+            historic landmarks and welcoming villages that make Lesotho
+            a destination unlike any other.
+        </p>
+    </section>
+
+    <main class="content-section">
+
+        <section class="section-heading">
+            <div>
+                <p class="eyebrow">Explore Lesotho</p>
+                <h2>Places worth <em>the journey.</em></h2>
+            </div>
+
+            <div class="search-box">
+                <span class="search-icon">⌕</span>
+                <input
+                    type="search"
+                    id="destinationSearch"
+                    placeholder="Search destinations..."
+                    aria-label="Search destinations">
+            </div>
+        </section>
+
+        <div class="filter-bar" aria-label="Filter destinations">
+            <button class="filter-button active" data-filter="all">
+                All Places
+            </button>
+
+            <button class="filter-button" data-filter="mountains">
+                Mountains
+            </button>
+
+            <button class="filter-button" data-filter="waterfalls">
+                Waterfalls
+            </button>
+
+            <button class="filter-button" data-filter="culture">
+                Culture & History
+            </button>
+
+            <button class="filter-button" data-filter="adventure">
+                Adventure
+            </button>
+        </div>
+
+        <section class="destination-list" id="destinationList">
+
+            <article class="destination-card" data-category="mountains adventure">
+                <div class="number">01</div>
+
+                <div class="destination-info">
+                    <h3>Sani Pass</h3>
+                    <p>
+                        Travel along a spectacular mountain pass known
+                        for its steep roads, winding turns and incredible
+                        highland scenery.
+                    </p>
+                    <span class="category-label">Mountains · Adventure</span>
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80"
+                    alt="Mountain peaks at Sani Pass">
+
+                <div class="arrow">↗</div>
+            </article>
+
+            <article class="destination-card" data-category="waterfalls adventure">
+                <div class="number">02</div>
+
+                <div class="destination-info">
+                    <h3>Maletsunyane Falls</h3>
+                    <p>
+                        Visit one of Lesotho's most famous waterfalls,
+                        surrounded by dramatic cliffs and beautiful
+                        natural scenery near Semonkong.
+                    </p>
+                    <span class="category-label">Waterfalls · Adventure</span>
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80"
+                    alt="Waterfall surrounded by nature">
+
+                <div class="arrow">↗</div>
+            </article>
+
+            <article class="destination-card" data-category="culture">
+                <div class="number">03</div>
+
+                <div class="destination-info">
+                    <h3>Thaba Bosiu</h3>
+                    <p>
+                        Explore the historic mountain stronghold associated
+                        with King Moshoeshoe I and the founding of the
+                        Basotho nation.
+                    </p>
+                    <span class="category-label">Culture & History</span>
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80"
+                    alt="Natural landscape surrounding a historic destination">
+
+                <div class="arrow">↗</div>
+            </article>
+
+            <article class="destination-card" data-category="mountains adventure">
+                <div class="number">04</div>
+
+                <div class="destination-info">
+                    <h3>Sehlabathebe National Park</h3>
+                    <p>
+                        Discover remote highland landscapes, unusual
+                        rock formations, open grasslands and a peaceful
+                        natural environment.
+                    </p>
+                    <span class="category-label">Mountains · Nature</span>
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=800&q=80"
+                    alt="Wild natural landscape">
+
+                <div class="arrow">↗</div>
+            </article>
+
+            <article class="destination-card" data-category="mountains">
+                <div class="number">05</div>
+
+                <div class="destination-info">
+                    <h3>Katse Dam</h3>
+                    <p>
+                        Enjoy impressive mountain views around one of
+                        Lesotho's major engineering landmarks and the
+                        beautiful reservoir.
+                    </p>
+                    <span class="category-label">Mountains · Engineering</span>
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+                    alt="Mountain landscape and lake">
+
+                <div class="arrow">↗</div>
+            </article>
+
+            <article class="destination-card" data-category="culture adventure">
+                <div class="number">06</div>
+
+                <div class="destination-info">
+                    <h3>Malealea</h3>
+                    <p>
+                        Experience Basotho hospitality, village life,
+                        mountain scenery and opportunities to explore
+                        the countryside on foot or horseback.
+                    </p>
+                    <span class="category-label">Culture · Adventure</span>
+                </div>
+
+                <img
+                    src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=800&q=80"
+                    alt="Green countryside and trees">
+
+                <div class="arrow">↗</div>
+            </article>
+
+        </section>
+
+        <div class="no-results" id="noResults">
+            <h3>No destinations found</h3>
+            <p>Try another search word or choose a different category.</p>
+        </div>
+
+        <section class="explore-banner">
+            <h2>Your Lesotho story starts here.</h2>
+
+            <p>
+                Plan your journey through the mountain kingdom and
+                discover experiences that stay with you long after
+                you return home.
+            </p>
+
+            <a href="activities.html" class="explore-button">
+                Explore Activities →
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand">
+                    <div class="brand-mark">LT</div>
+
+                    <div class="brand-name">
+                        Lesotho<br>
+                        <small>TRAILS</small>
+                    </div>
+                </div>
+
+                <p class="footer-copy">
+                    Your guide to mountain escapes, culture and adventure
+                    in Lesotho.
+                </p>
+            </div>
+
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="index.html">Home</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="activities.html">Activities</a>
+                <a href="stay.html">Stay</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 Lesotho Trails</span>
+            <span>Made for the road less travelled.</span>
+        </div>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById("destinationSearch");
+        const filterButtons = document.querySelectorAll(".filter-button");
+        const destinationCards = document.querySelectorAll(".destination-card");
+        const noResults = document.getElementById("noResults");
+        const themeToggle = document.getElementById("themeToggle");
+
+        let activeCategory = "all";
+
+        function filterDestinations() {
+            const searchText = searchInput.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            destinationCards.forEach(function(card) {
+                const cardText = card.textContent.toLowerCase();
+                const categories = card.dataset.category.split(" ");
+
+                const matchesSearch = cardText.includes(searchText);
+
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    categories.includes(activeCategory);
+
+                if (matchesSearch && matchesCategory) {
+                    card.classList.remove("hidden");
+                    visibleCount++;
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+
+            noResults.style.display =
+                visibleCount === 0 ? "block" : "none";
+        }
+
+        searchInput.addEventListener("input", filterDestinations);
+
+        filterButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                filterButtons.forEach(function(item) {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+                activeCategory = button.dataset.filter;
+
+                filterDestinations();
+            });
+        });
+
+        themeToggle.addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+
+            const darkMode =
+                document.body.classList.contains("dark-mode");
+
+            themeToggle.textContent = darkMode ? "☀" : "◐";
+
+            themeToggle.setAttribute(
+                "aria-label",
+                darkMode ? "Switch to light mode" : "Switch to dark mode"
+            );
+        });
+    </script>
+
+</body>
+</html>
